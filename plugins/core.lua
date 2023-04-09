@@ -3,23 +3,41 @@ return {
   {
     "goolord/alpha-nvim",
     opts = function(_, opts)
-      -- customize the dashboard header
-      opts.section.header.val = {
-        " █████  ███████ ████████ ██████   ██████",
-        "██   ██ ██         ██    ██   ██ ██    ██",
-        "███████ ███████    ██    ██████  ██    ██",
-        "██   ██      ██    ██    ██   ██ ██    ██",
-        "██   ██ ███████    ██    ██   ██  ██████",
-        " ",
-        "    ███    ██ ██    ██ ██ ███    ███",
-        "    ████   ██ ██    ██ ██ ████  ████",
-        "    ██ ██  ██ ██    ██ ██ ██ ████ ██",
-        "    ██  ██ ██  ██  ██  ██ ██  ██  ██",
-        "    ██   ████   ████   ██ ██      ██",
+      local nvimbanner = {
+        "   ⣴⣶⣤⡤⠦⣤⣀⣤⠆     ⣈⣭⣭⣿⣶⣿⣦⣼⣆         ",
+        "    ⠉⠻⢿⣿⠿⣿⣿⣶⣦⠤⠄⡠⢾⣿⣿⡿⠋⠉⠉⠻⣿⣿⡛⣦       ",
+        "      ⠈   ⠈⢿⣿⣟⠦⠄⣾⣿⣿⣷    ⠻⠿⢿⣿⣧⣄     ",
+        "           ⣸⣿⣿⢧⠄⢻⠻⣿⣿⣷⣄⣀⠄⠢⣀⡀⠈⠙⠿⠄    ",
+        "   ⢀      ⢠⣿⣿⣿⠈⠄ ⠡⠌⣻⣿⣿⣿⣿⣿⣿⣿⣛⣳⣤⣀⣀   ",
+        "   ⢠⣧⣶⣥⡤⢄⠄⣸⣿⣿⠘⠄ ⢀⣴⣿⣿⡿⠛⣿⣿⣧⠈⢿⠿⠟⠛⠻⠿   ",
+        "  ⣰⣿⣿⠛⠻⣿⣿⡦⢹⣿⣷⠄ ⠄⢊⣿⣿⡏  ⢸⣿⣿⡇⠄⢀⣠⣄⣾    ",
+        " ⣠⣿⠿⠛⠄⢀⣿⣿⣷⠘⢿⣿⣦⡀⠄⢸⢿⣿⣿⣄ ⣸⣿⣿⡇⣪⣿⡿⠿⣿⣷⡄  ",
+        " ⠙⠃   ⣼⣿⡟⠌ ⠈⠻⣿⣿⣦⣌⡇⠻⣿⣿⣷⣿⣿⣿⠐⣿⣿⡇ ⠛⠻⢷⣄ ",
+        "     ▐⢻▄▄▄▄ .⠈⠻⣿⣿ ▌⣷▐▪⣿•⣿▌⠄▄⢿·.   ⠁",
+        "    •█▌▐▀▄.▀▪⣶⣾⣿⣿▪█·███·██ ▐███▪   ",
+        "    ▐█▐▐▐▀▀▪▄▄█▀▄▐█▐█▐█▐█ ▌▐▌▐█·   ",
+        "    ██▐█▐█▄▄▐█▌.▐▌███▐███ ██▌▐█▌   ",
+        "    ▀▀ █▪▀▀▀ ▀█▄▀. ▀ ▀▀▀▀  █▪▀▀▀   ",
       }
+      -- customize the dashboard header
+      opts.section.header.val = nvimbanner
       return opts
     end,
   },
+  {
+    "lewis6991/gitsigns.nvim",
+    opts = function(_, opts)
+      opts.signs = {
+        add          = { hl = 'GitSignsAdd', text = 'A', numhl = 'GitSignsAddNr', linehl = 'GitSignsAddLn' },
+        change       = { hl = 'GitSignsChange', text = 'M', numhl = 'GitSignsChangeNr', linehl = 'GitSignsChangeLn' },
+        delete       = { hl = 'GitSignsDelete', text = 'D', numhl = 'GitSignsDeleteNr', linehl = 'GitSignsDeleteLn' },
+        topdelete    = { hl = 'GitSignsDelete', text = 'D', numhl = 'GitSignsDeleteNr', linehl = 'GitSignsDeleteLn' },
+        changedelete = { hl = 'GitSignsChange', text = 'D', numhl = 'GitSignsChangeNr', linehl = 'GitSignsChangeLn' },
+        untracked    = { hl = 'GitSignsAdd', text = 'N', numhl = 'GitSignsAddNr', linehl = 'GitSignsAddLn' },
+      }
+      return opts
+    end,
+  }
   -- You can disable default plugins as follows:
   -- { "max397574/better-escape.nvim", enabled = false },
   --
