@@ -59,9 +59,10 @@ return {
           local mappings = {
             m = {
               name = "Metals Code",
-              r = { "<Cmd>lua vim.lsp.buf.rename()<CR>", "Rename" },
               a = { "<Cmd>lua AttachDebugger()<CR>", "Attach Debugger" },
             },
+            -- adding rename to LSP
+            ["lr"] = { "<Cmd>lua vim.lsp.buf.rename()<CR>", "Rename" },
           }
 
           which_key.register(mappings, {
