@@ -57,11 +57,9 @@ return {
           if not status_ok then return end
 
           local mappings = {
-            m = {
-              name = "Metals Code",
-              a = { "<Cmd>lua AttachDebugger()<CR>", "Attach Debugger" },
-            },
-            -- adding rename to LSP
+            -- adding debug attach to Debug menu
+            ["da"] = { "<Cmd>lua AttachDebugger()<CR>", "Attach Metals Debugger" },
+            -- adding rename to LSP menu
             ["lr"] = { "<Cmd>lua vim.lsp.buf.rename()<CR>", "Rename" },
           }
 
