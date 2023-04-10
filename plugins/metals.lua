@@ -1,7 +1,7 @@
 local api = vim.api
 
 function AttachDebugger()
-  local dap = require("dap")
+  local dap = require "dap"
 
   dap.configurations.scala = {
     {
@@ -38,9 +38,7 @@ return {
         statusBarProvider = "on",
       },
       capabilities = require("cmp_nvim_lsp").default_capabilities(),
-      on_attach = function(_, _)
-        require("metals").setup_dap()
-      end,
+      on_attach = function(_, _) require("metals").setup_dap() end,
     },
     config = function(_, opts)
       -- Autocmd that will actually be in charging of starting the whole thing
@@ -64,12 +62,12 @@ return {
           }
 
           which_key.register(mappings, {
-            mode = "n",     -- NORMAL mode
+            mode = "n", -- NORMAL mode
             prefix = "<leader>",
-            buffer = nil,   -- Global mappings. Specify a buffer number for buffer local mappings
-            silent = true,  -- use `silent` when creating keymaps
+            buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+            silent = true, -- use `silent` when creating keymaps
             noremap = true, -- use `noremap` when creating keymaps
-            nowait = true,  -- use `nowait` when creating keymaps
+            nowait = true, -- use `nowait` when creating keymaps
           })
 
           vim.keymap.set("n", ",", "<cmd>lua vim.lsp.buf.code_action()<CR>")

@@ -1,9 +1,7 @@
-local Terminal = require('toggleterm.terminal').Terminal
-local k9s      = Terminal:new({ cmd = "k9s", hidden = true })
+local Terminal = require("toggleterm.terminal").Terminal
+local k9s = Terminal:new { cmd = "k9s", hidden = true }
 
-function _k9s_toggle()
-  k9s:toggle()
-end
+function K9sToggle() k9s:toggle() end
 
 -- Mapping data with "desc" stored directly by vim.keymap.set().
 --
@@ -18,10 +16,9 @@ return {
     ["<leader>bn"] = { "<cmd>tabnew<cr>", desc = "New tab" },
     ["<leader>bD"] = {
       function()
-        require("astronvim.utils.status").heirline.buffer_picker(function(bufnr)
-          require("astronvim.utils.buffer").close(
-            bufnr)
-        end)
+        require("astronvim.utils.status").heirline.buffer_picker(
+          function(bufnr) require("astronvim.utils.buffer").close(bufnr) end
+        )
       end,
       desc = "Pick to close",
     },
@@ -29,7 +26,7 @@ return {
     -- this is useful for naming menus
     ["<leader>b"] = { name = "Buffers" },
     ["<leader>uU"] = { "<Cmd>UndotreeToggle<CR>", desc = "Undotree Toggle" },
-    ["<leader>uk"] = { "<cmd>lua _k9s_toggle()<CR>", desc = "K9s Toggle" },
+    ["<leader>uk"] = { "<Cmd>lua K9sToggle()<CR>", desc = "K9s Toggle" },
     -- quick save
     -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
   },
