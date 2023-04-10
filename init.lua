@@ -20,7 +20,8 @@ return {
   colorscheme = "catppuccin",
   -- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
   diagnostics = {
-    virtual_text = true,
+    virtual_text = false,
+    virtual_lines = true, -- requires https://git.sr.ht/~whynothugo/lsp_lines.nvim
     underline = true,
   },
   lsp = {

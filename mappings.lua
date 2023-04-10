@@ -1,3 +1,10 @@
+local Terminal = require('toggleterm.terminal').Terminal
+local k9s      = Terminal:new({ cmd = "k9s", hidden = true })
+
+function _k9s_toggle()
+  k9s:toggle()
+end
+
 -- Mapping data with "desc" stored directly by vim.keymap.set().
 --
 -- Please use this mappings table to set keyboard mapping since this is the
@@ -22,11 +29,12 @@ return {
     -- this is useful for naming menus
     ["<leader>b"] = { name = "Buffers" },
     ["<leader>uU"] = { "<Cmd>UndotreeToggle<CR>", desc = "Undotree Toggle" },
+    ["<leader>uk"] = { "<cmd>lua _k9s_toggle()<CR>", desc = "K9s Toggle" },
     -- quick save
     -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
   },
   t = {
     -- setting a mapping to false will disable it
-    -- ["<esc>"] = false,
+    ["<esc>"] = { "<Cmd>ToggleTerm<CR>" },
   },
 }
