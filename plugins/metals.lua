@@ -1,30 +1,5 @@
 local api = vim.api
 
-function AttachDebugger()
-  local dap = require "dap"
-
-  dap.configurations.scala = {
-    {
-      type = "scala",
-      request = "launch",
-      name = "run or test file",
-      metals = {
-        runType = "runOrTestFile",
-      },
-    },
-    {
-      type = "scala",
-      request = "launch",
-      name = "test target",
-      metals = {
-        runType = "testTarget",
-      },
-    },
-  }
-
-  dap.continue()
-end
-
 return {
   {
     "scalameta/nvim-metals",
@@ -33,12 +8,37 @@ return {
       settings = {
         showImplicitArguments = true,
         excludedPackages = { "akka.actor.typed.javadsl", "com.github.swagger.akka.javadsl" },
+        -- testUserInterface = "Test Explorer",
       },
       init_options = {
         statusBarProvider = "on",
+        -- testExplorerProvider = true,
       },
       capabilities = require("cmp_nvim_lsp").default_capabilities(),
-      on_attach = function(_, _) require("metals").setup_dap() end,
+      on_attach = function(_, _)
+        local dap = require "dap"
+
+        dap.configurations.scala = {
+          {
+            type = "scala",
+            request = "launch",
+            name = "run or test file",
+            metals = {
+              runType = "runOrTestFile",
+            },
+          },
+          {
+            type = "scala",
+            request = "launch",
+            name = "test target",
+            metals = {
+              runType = "testTarget",
+            },
+          },
+        }
+
+        require("metals").setup_dap()
+      end,
     },
     config = function(_, opts)
       -- Autocmd that will actually be in charging of starting the whole thing
@@ -55,8 +55,6 @@ return {
           if not status_ok then return end
 
           local mappings = {
-            -- adding debug attach to Debug menu
-            ["da"] = { "<Cmd>lua AttachDebugger()<CR>", "Attach Metals Debugger" },
             -- adding rename to LSP menu
             ["lr"] = { "<Cmd>lua vim.lsp.buf.rename()<CR>", "Rename" },
           }
