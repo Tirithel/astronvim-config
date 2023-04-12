@@ -13,7 +13,10 @@ return {
         filetypes = { "scala", "sbt" },
       },
       null_ls.builtins.formatting.stylua,
-      -- null_ls.builtins.formatting.prettier,
+      null_ls.builtins.code_actions.ltrs,
+      null_ls.builtins.formatting.prettier.with {
+        -- extra_filetypes = { "conf" },
+      },
     }
     return config -- return final config table
   end,
