@@ -9,7 +9,9 @@ return {
     -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
     config.sources = {
       -- Set a formatter
-      null_ls.builtins.formatting.scalafmt,
+      null_ls.builtins.formatting.scalafmt.with {
+        filetypes = { "scala", "sbt" },
+      },
       null_ls.builtins.formatting.stylua,
       -- null_ls.builtins.formatting.prettier,
     }
