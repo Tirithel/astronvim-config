@@ -21,7 +21,8 @@ return {
   -- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
   diagnostics = {
     virtual_text = true,
-    virtual_lines = { only_current_line = true }, -- requires https://git.sr.ht/~whynothugo/lsp_lines.nvim
+    virtual_lines = false,
+    -- virtual_lines = { only_current_line = true }, -- requires https://git.sr.ht/~whynothugo/lsp_lines.nvim
     underline = true,
   },
   lsp = {
