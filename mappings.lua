@@ -32,6 +32,7 @@ return {
   },
   t = {
     -- setting a mapping to false will disable it
-    ["<esc>"] = { "<Cmd>ToggleTerm<CR>" },
+    -- ["<esc>"] = { "<Cmd>ToggleTerm<CR>" },
+    ["C-h"] = { "<Cmd>ToggleTerm<CR>" },
   },
 }
